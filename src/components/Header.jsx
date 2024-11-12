@@ -20,7 +20,7 @@ const Header = () => {
             <Nav className="ms-auto">
               <button
                 style={{ width: "140px", height: "61px" }}
-                className="main-color2 border-0 rounded-2"
+                className="main-color2 border-0 rounded-2 my-3"
               >
                 <Link to="/login" className="text-decoration-none">
                   Log In
@@ -33,7 +33,7 @@ const Header = () => {
               >
                 <Link
                   to="/register"
-                  className="text-decoration-none text-white"
+                  className="text-decoration-none text-white "
                 >
                   Sign Up
                 </Link>

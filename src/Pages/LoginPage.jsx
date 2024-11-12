@@ -1,67 +1,84 @@
 import React from "react";
 import Header from "../components/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import goggle from "../assets/Frame 103.png";
 import or from "../assets/Frame 113.png";
 import pz from "../assets/Frame.png";
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const redirect = useNavigate();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!email.trim() || !password.trim()) {
+      setError("Please provide your email and password to sign in");
+    } else {
+      redirect("/");
+    }
+  };
+
   return (
-    <div className="register d-flex">
-      <Link to="/">
-        <img className="ms-3" src={pz} alt="" style={{ marginTop: "20px" }} />
-      </Link>
-      <div className="mx-auto mt-5">
-        <form className="bg-white mx-auto my-5 p-5 shadow-lg rounded-2">
+    <div className="signin register">
+      <header className="ps-2 py-3">
+        <nav className="container">
+          <Link className="text-decoration-none" to="/">
+            <span className="main-color-bg text-white rounded-circle p-2">
+              PZ
+            </span>
+            <span className="text-white fs-5 fw-bolder ms-2">Perfumerye</span>
+          </Link>
+        </nav>
+      </header>
+      <div className="container">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white mx-auto p-3 shadow-lg rounded-2"
+        >
           <h1>Welcome Back</h1>
           <p>Fill in your information to access your account</p>
           <label htmlFor="email">Email</label>
           <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             type="email"
             className="form-control my-2"
             placeholder="Enter your email"
           />
           <label htmlFor="password">Password</label>
           <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             type="password"
             className="form-control my-2"
             placeholder="Enter your password"
           />
+          <p className="text-danger">{error}</p>
           <div className="d-flex flex-row justify-content-between">
-            <div className="my-3">
-              <input className="form-check-input m-1" type="checkbox" />
-              <label htmlFor="checkbox" className="form-check-label">
+            <div>
+              <input className="form-check-input" type="checkbox" />
+              <label htmlFor="checkbox" className="form-check-label ms-1">
                 Remember Me
               </label>
             </div>
-            <Link className="text-danger text-decoration-none" to="/register">
+            <a className="text-danger text-decoration-none" href="##">
               Forgot password?
-            </Link>
+            </a>
           </div>
           <button
-            style={{ height: "50px" }}
-            className="w-100 rounded-2 main-color-bg border-0 my-4"
+            type="submit"
+            style={{ backgroundColor: "#8D34FF", height: "64px" }}
+            className="text-white mt-2 fs-5 border-0 rounded-2 w-100"
           >
-            <Link className="text-decoration-none text-white" to="/login">
-              Sign Up
-            </Link>
+            Sign In
           </button>
-          <img
-            className="d-flex mx-auto my-2"
-            src={or}
-            alt=""
-            width={"400px"}
-          />
-          <img
-            className="d-flex mx-auto my-3"
-            src={goggle}
-            alt=""
-            width={"450px"}
-          />
-          <p className="mx-auto text-center my-4">
-            Don’t have an account?{" "}
-            <Link className="text-decoration-none" to="/register">
-              Sign Up
+          <img className="d-flex m-auto my-2 w-100" src={or} alt="" />
+          <img className="d-flex justify-content-center align-content-center" style={{width: "100%"}} src={goggle} alt="" />
+          <p className="text-center mt-2">
+            Don't have an account? <Link style={{ color: "#8D34FF" }}   to="/register" className="text-decoration-none ms-1">
+              Register
             </Link>
           </p>
         </form>

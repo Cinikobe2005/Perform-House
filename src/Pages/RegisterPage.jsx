@@ -1,111 +1,102 @@
 import React from "react";
-import goggle from "../assets/Frame 103.png"
+import { Link } from "react-router-dom";
+import goggle from "../assets/Frame 103.png";
 import or from "../assets/Frame 113.png";
 import pz from "../assets/Frame.png";
-import { Link } from "react-router-dom";
+
 const RegisterPage = () => {
-  const form = () => {
-    const [user, setUser] = useState({
-      email: "",
-      firstName: "",
-      LastName: "",
-      password: "",
-      confirmPassword: "",
-    });
-  };
   return (
-    <div className="register d-flex">
-        <Link to="/"><img className="ms-3" src={pz} alt="" style={{marginTop: "20px"}}/></Link>
-      <div className="mx-auto mt-5">
+    <div className="register">
+      <header className="py-3">
+        <nav className="container">
+          <Link className="text-decoration-none" to="/">
+            <span className="main-color-bg text-white rounded-circle p-2">
+              PZ
+            </span>
+            <span className="text-white fs-5 fw-bolder ms-2">Perfumerye</span>
+          </Link>
+        </nav>
+      </header>
+      <div>
         <form
-          style={{ height: "800px" }}
-          className="mx-auto my-5 shadow-lg p-5 bg-white"
+          style={{ maxWidth: "600px" }}
+          className="bg-white mx-auto px-4 py-2 shadow-lg rounded-2"
         >
-          <h2>Get Started</h2>
-          <p>Lets get started by filling out the information below</p>
-          <div className="d-flex gap-3">
+          <h1>Get Started</h1>
+          <p>Let's get started by filling out the information below</p>
+          <div className="d-flex flex-column flex-lg-row gap-1 justify-content-between my-3">
             <div>
-              <label htmlFor="firstname" className="form-label">
+              <label className="form-label" htmlFor="firstname">
                 First Name
               </label>
-
               <input
                 type="text"
-                name="firstname"
-                id="firstname"
-                placeholder="Enter name"
+                placeholder="Enter First Name"
                 className="form-control"
               />
             </div>
             <div>
-              <label htmlFor="lastname" className="form-label">
+              <label className="form-label" htmlFor="text">
                 Last Name
               </label>
               <input
                 type="text"
-                name="lastname"
-                id="lastname"
-                placeholder="Enter name"
+                placeholder="Enter Last Name"
                 className="form-control"
               />
             </div>
           </div>
-
-          <label htmlFor="email" className="form-label my-3">
+          <label className="form-label" htmlFor="email">
             Email
           </label>
           <input
             type="email"
+            placeholder="Enter your Email"
             className="form-control"
-            name="email"
-            placeholder="Enter your email"
           />
-          <label htmlFor="password" className="form-label my-3">
+          <label className="form-label" htmlFor="password">
             Password
           </label>
           <input
             type="password"
+            placeholder="Enter your Password"
             className="form-control"
-            name="password"
-            placeholder="Enter your password"
           />
-          <label htmlFor="password" className="form-label my-3">
+          <label className="form-label" htmlFor="password">
             Confirm Password
           </label>
           <input
             type="password"
+            placeholder="Confirm your Password"
             className="form-control"
-            name="password"
-            placeholder="Confirm your password"
           />
-          <input type="checkbox" id="agree" />
-          <label htmlFor="agree" className="form-check-label mt-2 ms-1  ">
-            I agree to <span className="main-color">Terms of Service</span> and{" "}
-            <span className="main-color">Privacy Policies</span>
-          </label>
-          <button
-            style={{ height: "40px" }}
-            className="w-100 rounded-2 main-color-bg border-0 my-4"
-          >
-            <Link className="text-decoration-none text-white" to="/login">
-              Sign Up
-            </Link>
-          </button>
+          <div className="my-2">
+            <input className="form-check-input" type="checkbox" />
+            <label className="form-check-label ms-2" htmlFor="checkbox">
+              I agree to{" "}
+              <a href="##">
+                <span>Terms of Service</span>
+              </a>{" "}
+              and
+              <a href="##">
+                <span> Privacy Policies</span>
+              </a>
+            </label>
+          </div>
+          <img className="d-flex m-auto my-2 w-100" src={or} alt="" />
           <img
-            className="d-flex mx-auto my-2"
-            src={or}
-            alt=""
-            width={"300px"}
-          />
-          <img
-            className="d-flex mx-auto my-3"
+            className="d-flex justify-content-center align-content-center"
+            style={{ width: "100%" }}
             src={goggle}
             alt=""
-            width={"350px"}
           />
-          <p className="mx-auto text-center my-4">
+          <p className="text-center my-2">
             Already have an account?{" "}
-            <Link className="text-decoration-none" to="/login">
+            <Link
+              className="text-decoration-none"
+              style={{ color: "#8D34FF" }}
+              to="/signin"
+            >
               Sign in
             </Link>
           </p>
